@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import plotly.express as px
 import plotly.graph_objects as go
+from sklearn.neighbors import KNeighborsClassifier
 
 st.header("rati")
 st.image("./pic/food.jpg")
@@ -42,7 +43,13 @@ sp_len = st.number_input("กรุณาเลือกข้อมูล sepal
 sp_wd = st.number_input("กรุณาเลือกข้อมูล sepal.width")
 
 if st.button("ทำนายผล"):
-   st.markdown("ใส่โมเดล")
+   X = dt.drop('variety', axis=1)
+   y = dt.variety
+   Knn_model = KNeighborsClassifier(n_neighbors=3)
+   Knn_model.fit(X, y)
+   x_input = np.array([[5.1, 3.5, 1.4, 0.2]])
+   st.write(Knn_model.predict(x_input))
+
    st.button("ไม่แสดงข้อมูล")
 else:
     st.write("ไม่แสดงข้อมูล")
