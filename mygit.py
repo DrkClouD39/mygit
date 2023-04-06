@@ -6,3 +6,4 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 st.header("rati")
+st.image("./pic/food.jpg")
